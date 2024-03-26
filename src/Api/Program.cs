@@ -13,6 +13,8 @@ var settings = builder.Configuration.Get<Settings>();
 var mongoClient = new MongoClient(settings!.MongoConnectionString);
 builder.Services.AddSingleton<IMongoClient>(mongoClient);
 
+builder.Services.AddScoped<ITodoRepository, TodoRepository>();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -26,10 +28,3 @@ app.UseHttpsRedirection();
 app.MapEndpoints();
 
 app.Run();
-
-class Settings
-{
-    public required string MongoConnectionString { get; set; }
-    public string DatabaseName = "TodoDb";
-    public string CollectionName = "TodoCollection";
-}

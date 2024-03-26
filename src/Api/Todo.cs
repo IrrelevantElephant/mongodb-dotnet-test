@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-class Todo
+public class Todo
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
